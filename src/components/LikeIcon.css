@@ -1,0 +1,17 @@
+.like{
+    width: 20px;
+    height: 20px;
+    top: 20;
+    right: 20;
+}
+
+.like__icon{
+    
+}
+.like__icon--liked{
+    content : url("../../public/like_circle_fill_red_20.svg");
+}
+
+.like__icon--unliked{
+    content : url("../../public/like_outline_20.svg");
+}

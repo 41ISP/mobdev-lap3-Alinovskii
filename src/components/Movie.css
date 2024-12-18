@@ -1,0 +1,49 @@
+.movie {
+    margin: 10px;
+    padding: 1px;
+    background-color: var(--MovieName-color);
+}
+
+.Name {
+    background-color: darkred;
+    font-size: 15pt;
+    height: 51.2px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Type {
+    color: black;
+    font-size: 15pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Year {
+    color: black;
+    font-size: 15pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Image {
+    width: 20pc;
+    height: 30pc;
+    position: relative;
+}
+
+.movie-container {
+    position: relative;
+}
+
+.like {
+    position: absolute;
+ bottom: 20px;
+  right: 20px;
+  z-index: 20;
+    width: 20px;
+}
