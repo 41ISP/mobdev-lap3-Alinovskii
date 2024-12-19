@@ -33,6 +33,7 @@ const MoviePage = () => {
       <p>Language: {movie.Language}</p>
       <p>Writer: {movie.Writer}</p>
       <p>Runtime: {movie.Runtime}</p>
+      
       </div> 
     </div>
   );

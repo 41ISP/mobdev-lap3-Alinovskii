@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MovieForm = ({ onSearchMovieByName }) => {
   const [movieName, setMovieName] = useState("");
@@ -12,17 +12,17 @@ const MovieForm = ({ onSearchMovieByName }) => {
 
   useEffect(() => {console.log(page); search()}, [page])
 
-  const goBack = () => {
-    setPage((page) => page - 1)
+  const navigate = useNavigate()
+  
+  const changePage = (listpage) => {
+    setPage((page) => page + listpage)
+    navigate(listpage)
   }
 
-  const goForward = () => {
-    setPage((page) => page + 1) 
-  }
 
   const reloadPage = () => {
     const hash = movieName;
-    location.replace("http://localhost:5173/#" + hash);
+    location.replace("https://vigilant-goldfish-x5qwgp9w5p39v6p-5173.app.github.dev/#" + hash);
   };
 
   const search = async () => {
@@ -52,8 +52,8 @@ const MovieForm = ({ onSearchMovieByName }) => {
         Search
       </button>
       <div>
-        <button onClick={goBack}>Назад</button>
-        <button onClick={goForward}>Вперед</button>
+        <button onClick={() => changePage(-1)}>Назад</button>
+        <button onClick={() => changePage(1)}>Вперед</button>
       </div>
     </form>
   );

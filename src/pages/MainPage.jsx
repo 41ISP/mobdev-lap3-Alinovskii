@@ -20,7 +20,6 @@ const MainPage = () => {
       </Link>
       <MovieForm onSearchMovieByName={onSearchMovieByName}></MovieForm>
       <Feed movies={movies}></Feed>
-
     </div>
   );
 };
