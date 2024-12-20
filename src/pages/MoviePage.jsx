@@ -1,10 +1,20 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import OMDBApi from "../shared/api";
 
 const MoviePage = () => {
   const params = useParams()
   const [movie, setMovie] = useState({});
+
+  
+  const [page, setPage] = useState(1);
+
+
+  const navigate = useNavigate()
+  const changePage = (listpage) => {
+    setPage((page) => page + listpage)
+    navigate(listpage)
+  }
 
   useEffect(() => {
     console.log("imdbID: "+ params.imdbID);
@@ -33,8 +43,11 @@ const MoviePage = () => {
       <p>Language: {movie.Language}</p>
       <p>Writer: {movie.Writer}</p>
       <p>Runtime: {movie.Runtime}</p>
-      
       </div> 
+      <div className="switchPage">
+        <button onClick={() => changePage(-1)}>Назад</button>
+        <button onClick={() => changePage(1)}>Вперед</button>
+      </div>
     </div>
   );
 };

@@ -22,7 +22,7 @@ const MovieForm = ({ onSearchMovieByName }) => {
 
   const reloadPage = () => {
     const hash = movieName;
-    location.replace("https://vigilant-goldfish-x5qwgp9w5p39v6p-5173.app.github.dev/#" + hash);
+    location.replace("https://fluffy-pancake-vxrx5qg657vcxw9r-5173.app.github.dev/#" + hash);
   };
 
   const search = async () => {
@@ -51,7 +51,7 @@ const MovieForm = ({ onSearchMovieByName }) => {
       <button className="btn" type="submit">
         Search
       </button>
-      <div>
+      <div className="switchPage">
         <button onClick={() => changePage(-1)}>Назад</button>
         <button onClick={() => changePage(1)}>Вперед</button>
       </div>
