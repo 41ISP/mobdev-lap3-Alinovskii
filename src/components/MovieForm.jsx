@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+
 const MovieForm = ({ onSearchMovieByName }) => {
   const [movieName, setMovieName] = useState("");
   const handleText = (e) => {
@@ -11,12 +12,9 @@ const MovieForm = ({ onSearchMovieByName }) => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {console.log(page); search()}, [page])
-
-  const navigate = useNavigate()
   
   const changePage = (listpage) => {
     setPage((page) => page + listpage)
-    navigate(listpage)
   }
 
 
@@ -26,7 +24,7 @@ const MovieForm = ({ onSearchMovieByName }) => {
   };
 
   const search = async () => {
-    await onSearchMovieByName(location.hash.substring(1))
+    await onSearchMovieByName(location.hash.substring(1), page)
   }
 
   useEffect(() => {
@@ -35,10 +33,14 @@ const MovieForm = ({ onSearchMovieByName }) => {
     search()
   }, []);
 
+  const [showButtons, setShowButtons] = useState(false);
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+   e.preventDefault();
     reloadPage();
-    await onSearchMovieByName(movieName);
+   await onSearchMovieByName(movieName);
+    setShowButtons(true);
+    
   };
 
   return (
@@ -50,11 +52,13 @@ const MovieForm = ({ onSearchMovieByName }) => {
       ></input>
       <button className="btn" type="submit">
         Search
-      </button>
+      </button> 
+      {showButtons && (
       <div className="switchPage">
         <button onClick={() => changePage(-1)}>Назад</button>
         <button onClick={() => changePage(1)}>Вперед</button>
       </div>
+       )}
     </form>
   );
 };

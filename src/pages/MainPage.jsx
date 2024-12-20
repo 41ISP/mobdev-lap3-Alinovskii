@@ -6,10 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 const MainPage = () => {
   const [movies, setMovies] = useState([]);
-  const navigate = useNavigate()
 
-  const onSearchMovieByName = async (movieName) => {
-    const data = await OMDBApi.getMovieByName(movieName);
+  const onSearchMovieByName = async (movieName, page) => {
+    const data = await OMDBApi.getMovieByName(movieName, page);
     setMovies(data.data.Search);
   };  
 
