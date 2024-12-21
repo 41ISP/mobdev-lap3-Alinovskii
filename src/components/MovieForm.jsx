@@ -38,9 +38,15 @@ const MovieForm = ({ onSearchMovieByName }) => {
   const handleSubmit = async (e) => {
    e.preventDefault();
     reloadPage();
-   await onSearchMovieByName(movieName);
-    setShowButtons(true);
-    
+ await onSearchMovieByName(movieName);
+ if(movieName.length != 0)
+ {
+     setShowButtons(true);
+ }
+ else if(movieName.length <= 0)
+ {
+  setShowButtons(false);
+ }
   };
 
   return (
